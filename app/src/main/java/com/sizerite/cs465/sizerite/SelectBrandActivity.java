@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,12 @@ public class SelectBrandActivity extends AppCompatActivity {
         brands.add(new Brand("Nike", "#ffffff"));
         brands.add(new Brand("Adidas", "#ffffff"));
         brands.add(new Brand("Reebok", "#ffffff"));
+        brands.add(new Brand("Test", "#ffffff"));
+        brands.add(new Brand("Test", "#ff232f"));
+        brands.add(new Brand("Test", "#ff214f"));
+        brands.add(new Brand("Test", "#fff32f"));
+        brands.add(new Brand("Test", "#ffff14"));
+        brands.add(new Brand("Test", "#ffff54"));
 
         // Links the grid to the brand list.
         BrandAdapter adapter = new BrandAdapter(this, (ArrayList<Brand>) brands);
@@ -75,7 +82,7 @@ public class SelectBrandActivity extends AppCompatActivity {
             // Lookup view for data population
             TextView brandName = (TextView) convertView.findViewById(R.id.brand_name);
             ImageView brandImage = (ImageView) convertView.findViewById(R.id.brand_image);
-            RelativeLayout brandTile = (RelativeLayout) convertView.findViewById(R.id.brand_background);
+            CardView brandTile = (CardView) convertView.findViewById(R.id.brand_background);
 
             // Set the tile text and color based on the brand.
             brandName.setText(brand.Name);
