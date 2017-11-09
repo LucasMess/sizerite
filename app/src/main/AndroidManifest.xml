@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SelectBrandActivity"></activity>
+        <activity android:name=".SelectBrandActivity" />
+        <activity android:name=".SelectCategoryActivity"></activity>
     </application>
 
 </manifest>

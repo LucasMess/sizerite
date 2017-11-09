@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/brand_background"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="95dp"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:elevation="2dp"
+    android:background="@drawable/tile">
 
     <ImageView
         android:id="@+id/brand_image"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@android:color/holo_red_light"
-        android:src="@drawable/ic_plus_button">
-
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_dummy_brand"
+        android:elevation="2dp">
     </ImageView>
 
     <TextView
@@ -19,6 +24,6 @@
         android:layout_alignParentBottom="true"
         android:gravity="center"
         android:textSize="24dp"
-        android:text="Dummy Brand"/>
-
+        android:text="Dummy Brand"
+        android:textColor="#000"/>
 </RelativeLayout>
