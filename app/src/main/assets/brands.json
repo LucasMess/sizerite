@@ -1,0 +1,16 @@
+{ "brands" : [
+  {
+    "text":"Nike",
+    "categories":["shoes", "t-shirts", "pants", "socks"]
+  },
+  {
+    "text":"Adidas",
+    "showText":false,
+    "categories":["shoes", "t-shirts", "pants", "socks"]
+  },
+  {
+    "text":"Reebok",
+    "showText":false,
+    "categories":["shoes"]
+  }
+]}

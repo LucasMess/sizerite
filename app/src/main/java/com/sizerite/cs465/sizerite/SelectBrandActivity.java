@@ -13,11 +13,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SelectBrandActivity extends AppCompatActivity {
 
@@ -27,33 +25,24 @@ public class SelectBrandActivity extends AppCompatActivity {
         setContentView(R.layout.activity_select_brand);
         setTitle("Select a brand");
 
-        // Create a list of all the brands.
-        List brands = new ArrayList<Brand>();
-        brands.add(new Brand("Nike", "#ffffff"));
-        brands.add(new Brand("Adidas", "#ffffff"));
-        brands.add(new Brand("Reebok", "#ffffff"));
-        brands.add(new Brand("Test", "#ffffff"));
-        brands.add(new Brand("Test", "#ff232f"));
-        brands.add(new Brand("Test", "#ff214f"));
-        brands.add(new Brand("Test", "#fff32f"));
-        brands.add(new Brand("Test", "#ffff14"));
-        brands.add(new Brand("Test", "#ffff54"));
+        // Create a card grid for brands.
+        CardGrid cardGrid = new CardGrid(getApplicationContext());
+        cardGrid.createFrom("brands");
 
-        // Links the grid to the brand list.
-        BrandAdapter adapter = new BrandAdapter(this, (ArrayList<Brand>) brands);
-        GridView grid = findViewById(R.id.brand_grid);
-        grid.setAdapter(adapter);
+        // Bind card grid to view to show it.
+        GridView grid = (GridView)findViewById(R.id.brand_grid);
+        cardGrid.bindTo(grid);
 
         // Set the on click listener for the items.
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView parent, View view, int position, long id) {
 
                 // Clicked item.
-                Brand brand = (Brand) parent.getItemAtPosition(position);
+                CardGrid.Card card = (CardGrid.Card)parent.getItemAtPosition(position);
 
                 // Start select category activity and pass the name of the brand selected.
                 Intent intent = new Intent(view.getContext(), SelectCategoryActivity.class);
-                intent.putExtra("brand_selected", brand.Name);
+                intent.putExtra("brand_selected", card.text);
                 startActivity(intent);
             }
         });
@@ -76,13 +65,13 @@ public class SelectBrandActivity extends AppCompatActivity {
 
             // Check if an existing view is being reused, otherwise inflate the view
             if (convertView == null) {
-                convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_brand, parent, false);
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_grid_card, parent, false);
             }
 
             // Lookup view for data population
-            TextView brandName = (TextView) convertView.findViewById(R.id.brand_name);
-            ImageView brandImage = (ImageView) convertView.findViewById(R.id.brand_image);
-            CardView brandTile = (CardView) convertView.findViewById(R.id.brand_background);
+            TextView brandName = (TextView) convertView.findViewById(R.id.item_name);
+            ImageView brandImage = (ImageView) convertView.findViewById(R.id.item_image);
+            CardView brandTile = (CardView) convertView.findViewById(R.id.item_background);
 
             // Set the tile text and color based on the brand.
             brandName.setText(brand.Name);
