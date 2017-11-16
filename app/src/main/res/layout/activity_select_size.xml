@@ -12,7 +12,8 @@
         android:layout_centerVertical="true"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:background="#cfcfcf"
+        android:textAlignment="center"
+        android:background="#e8e8e8"
         />
 
     <TextView
