@@ -3,7 +3,6 @@ package com.sizerite.cs465.sizerite;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -77,7 +76,7 @@ public class SelectSizeActivity extends AppCompatActivity {
                     timer.schedule(new TimerTask() {
                         @Override
                         public void run() {
-                            Intent intent = new Intent(getApplicationContext(), FitSelectActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), SelectFitActivity.class);
                             startActivity(intent);
                         }
                     }, 500);

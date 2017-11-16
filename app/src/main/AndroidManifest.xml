@@ -19,7 +19,7 @@
         <activity android:name=".SelectBrandActivity" />
         <activity android:name=".SelectCategoryActivity" />
         <activity android:name=".SelectSizeActivity"/>
-        <activity android:name=".FitSelectActivity"/>
+        <activity android:name=".SelectFitActivity"/>
     </application>
 
 </manifest>

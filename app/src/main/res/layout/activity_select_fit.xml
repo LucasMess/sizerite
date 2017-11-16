@@ -5,6 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.sizerite.cs465.sizerite.MainActivity">
 
+    <ImageView
+        android:id="@+id/imageFit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/fitText"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="50dp"
+        android:src="@drawable/fillernormal"/>
     <TextView
         android:id="@+id/fitText"
         android:layout_width="wrap_content"
@@ -12,7 +20,7 @@
         android:layout_above="@+id/seekbar"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="24dp"
         android:text="Normal Fit" />
     <SeekBar
         android:id="@+id/seekbar"
