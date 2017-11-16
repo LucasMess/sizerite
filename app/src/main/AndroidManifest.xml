@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SelectBrandActivity" />
-        <activity android:name=".SelectCategoryActivity"></activity>
+        <activity android:name=".SelectCategoryActivity" />
+        <activity android:name=".SelectSizeActivity"></activity>
     </application>
 
 </manifest>

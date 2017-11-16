@@ -33,7 +33,7 @@ public class SelectCategoryActivity extends AppCompatActivity {
                 CardGrid.Card card = (CardGrid.Card) parent.getItemAtPosition(position);
 
                 // Start select category activity and pass the name of the brand selected.
-                Intent intent = new Intent(view.getContext(), SelectCategoryActivity.class);
+                Intent intent = new Intent(view.getContext(), SelectSizeActivity.class);
                 intent.putExtra("category_selected", card.text);
                 startActivity(intent);
             }
