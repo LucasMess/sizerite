@@ -1,6 +1,7 @@
 { "brands" : [
   {
     "text":"Nike",
+    "showText":false,
     "categories":["shoes", "t-shirts", "pants", "socks"]
   },
   {
@@ -12,5 +13,54 @@
     "text":"Reebok",
     "showText":false,
     "categories":["shoes"]
+  },
+  {
+    "text":"RalphLauren",
+    "showText":false,
+    "categories":["shoes", "t-shirts", "pants", "socks", "dresses", "sweaters"]
+  },
+  {
+    "text":"OldNavy",
+    "showText":false,
+    "categories":["shoes", "t-shirts", "pants", "socks", "dresses", "sweaters"]
+  },
+  {
+    "text":"Gap",
+    "showText":false,
+    "categories":["shoes", "t-shirts", "pants", "socks", "dresses", "sweaters"]
+  },
+  {
+    "text":"Levis",
+    "showText":false,
+    "categories":["shoes", "t-shirts", "pants", "socks", "dresses", "sweaters"]
+  },
+  {
+    "text":"MichaelKors",
+    "showText":false,
+    "categories":["shoes", "t-shirts", "pants", "socks", "dresses", "sweaters"]
+  },
+  {
+    "text":"Coach",
+    "showText":false,
+    "categories":["shoes", "t-shirts", "pants", "socks", "dresses", "sweaters"]
+  },
+  {
+    "text":"TommyHilfiger",
+    "showText":false,
+    "categories":["shoes", "t-shirts", "pants", "socks", "dresses", "sweaters"]
+  },
+  {
+    "text":"AmericanEagle",
+    "showText":false,
+    "categories":["shoes", "t-shirts", "pants", "socks", "dresses", "sweaters"]
+  },
+  {
+    "text":"UnderArmor",
+    "showText":false,
+    "categories":["shoes", "t-shirts", "pants", "socks", "dresses", "sweaters"]
+  },
+  {
+    "text":"Other",
+    "categories":["shoes", "t-shirts", "pants", "socks", "dresses", "sweaters"]
   }
 ]}
