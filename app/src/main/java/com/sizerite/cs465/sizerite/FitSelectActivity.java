@@ -26,10 +26,10 @@ public class FitSelectActivity extends AppCompatActivity {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                     TextView fitTextView = (TextView) findViewById(R.id.fitText);
-                    if (i <= 33) {
+                    if (i <= 3) {
                         fitTextView.setText("Tight fit");
                     }
-                    else if (i >= 34 && i <= 66){
+                    else if (i >= 4 && i <= 7){
                         fitTextView.setText("Normal fit");
                     }
                     else {
@@ -40,14 +40,14 @@ public class FitSelectActivity extends AppCompatActivity {
                 @Override
                 public void onStartTrackingTouch(SeekBar seekBar) {
                     Rect currBounds = seekBar.getThumb().getBounds();
-                    currBounds.offset(15, 15);
+                    currBounds.inset(30, 30);
                     seekBar.getThumb().setBounds(currBounds);
                 }
 
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
                     Rect currBounds = seekBar.getThumb().getBounds();
-                    currBounds.offset(-15, -15);
+                    currBounds.inset(-30, -30);
                     seekBar.getThumb().setBounds(currBounds);
                 }
             };
