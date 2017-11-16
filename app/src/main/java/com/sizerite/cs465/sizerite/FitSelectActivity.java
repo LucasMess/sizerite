@@ -11,7 +11,6 @@ import android.widget.TextView;
  */
 
 public class FitSelectActivity extends AppCompatActivity {
-    TextView fitTextView = (TextView) findViewById(R.id.fitText);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +25,7 @@ public class FitSelectActivity extends AppCompatActivity {
             new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                    TextView fitTextView = (TextView) findViewById(R.id.fitText);
                     if (i <= 33) {
                         fitTextView.setText("Tight fit");
                     }

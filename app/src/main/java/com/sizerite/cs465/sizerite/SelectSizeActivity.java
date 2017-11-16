@@ -77,7 +77,7 @@ public class SelectSizeActivity extends AppCompatActivity {
                     timer.schedule(new TimerTask() {
                         @Override
                         public void run() {
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), FitSelectActivity.class);
                             startActivity(intent);
                         }
                     }, 500);
