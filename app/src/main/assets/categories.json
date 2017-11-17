@@ -3,15 +3,36 @@
     "text":"T-Shirts"
   },
   {
+    "text":"Shirts"
+  },
+  {
+    "text":"Sweatshirts"
+  },
+  {
+    "text":"Jackets"
+  },
+  {
+    "text":"Dresses"
+  },
+  {
     "text":"Pants"
   },
   {
-    "text":"Shoes"
+    "text":"Jeans"
+  },
+  {
+    "text":"Skirts"
+  },
+  {
+    "text":"Hats"
   },
   {
     "text":"Socks"
   },
   {
-    "text":"Jackets"
+    "text":"Shoes"
+  },
+  {
+    "text":"Other"
   }
 ]}
