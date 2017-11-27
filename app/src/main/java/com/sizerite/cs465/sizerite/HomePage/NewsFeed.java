@@ -1,9 +1,11 @@
-package com.sizerite.cs465.sizerite;
+package com.sizerite.cs465.sizerite.HomePage;
 
 import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+
+import com.sizerite.cs465.sizerite.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;

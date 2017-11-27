@@ -6,9 +6,8 @@
     android:layout_height="match_parent"
     tools:context="com.sizerite.cs465.sizerite.SelectCategoryActivity">
 
-    <GridView
-        android:id="@+id/category_grid"
-        style="@style/CardGrid">
-    </GridView>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/category_grid">
+    </android.support.v7.widget.RecyclerView>
 
 </android.support.constraint.ConstraintLayout>

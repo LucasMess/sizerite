@@ -1,13 +1,13 @@
-package com.sizerite.cs465.sizerite;
+package com.sizerite.cs465.sizerite.HomePage;
 
 import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
-import java.lang.reflect.Array;
+import com.sizerite.cs465.sizerite.R;
+
 import java.util.ArrayList;
 
 /**
