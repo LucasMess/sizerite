@@ -26,20 +26,9 @@ public class SelectBrandActivity extends AppCompatActivity {
         // Bind card grid to view to show it.
         RecyclerView grid = (RecyclerView) findViewById(R.id.brand_grid);
         cardGrid.bindTo(grid);
+        // Set the activity to transition when an item is clicked.
+        cardGrid.onItemClickTransitionTo(SelectCategoryActivity.class);
 
-        // Set the on click listener for the items.
-//        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            public void onItemClick(AdapterView parent, View view, int position, long id) {
-//
-//                // Clicked item.
-//                Card card = (Card)parent.getItemAtPosition(position);
-//
-//                // Start select category activity and pass the name of the brand selected.
-//                Intent intent = new Intent(view.getContext(), SelectCategoryActivity.class);
-//                intent.putExtra("brand_selected", card.text);
-//                startActivity(intent);
-//            }
-//        });
 
     }
 }

@@ -1,10 +1,8 @@
 package com.sizerite.cs465.sizerite.CardGrid;
 
 import android.content.Context;
-import android.graphics.drawable.GradientDrawable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.GridView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,6 +22,7 @@ public class CardGridView {
 
     Context context;
     ArrayList<Card> cards;
+    CardAdapter adapter;
 
     public CardGridView(Context context) {
         this.context = context;
@@ -47,8 +46,18 @@ public class CardGridView {
         grid.setLayoutManager(layoutManager);
         grid.setHasFixedSize(true);
 
-        CardAdapter adapter = new CardAdapter(cards, context);
+        adapter = new CardAdapter(cards, context);
         grid.setAdapter(adapter);
+    }
+
+    /**
+     * Set the activity that the app will transition to once an item is clicked on.
+     * @param target The activity to go to.
+     */
+    public void onItemClickTransitionTo(Class target){
+        if (adapter == null)
+            throw new NullPointerException("The adapter has not been initialized yet. Call bindTo before this.");
+        adapter.onItemClickTransitionTo(target);
     }
 
     /**
@@ -79,6 +88,10 @@ public class CardGridView {
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void onClickRedirectTo(){
+
     }
 
     /**

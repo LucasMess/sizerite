@@ -7,9 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 
-import com.sizerite.cs465.sizerite.HomePage.PostHolder;
 import com.sizerite.cs465.sizerite.R;
 
 import java.util.ArrayList;
@@ -22,6 +20,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardHolder> {
     ArrayList<Card> cards;
     Context context;
     RecyclerView recyclerView;
+    Class target;
 
     public CardAdapter(ArrayList<Card> cards, Context context){
         this.cards = cards;
@@ -38,14 +37,36 @@ public class CardAdapter extends RecyclerView.Adapter<CardHolder> {
         // Set up the on click listener.
         view.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
+                if (recyclerView != null) {
+                    // TODO: Track the selection of the user.
+                    CardHolder clickedCard = (CardHolder) recyclerView.findContainingViewHolder(view);
+                    if (target != null) {
+                        Intent intent = new Intent(context, target);
+                        context.startActivity(intent);
+                    }
+                }
             }
         });
 
         return cardHolder;
     }
 
+    @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView){
         this.recyclerView = recyclerView;
+    }
+
+    @Override
+    public void onDetachedFromRecyclerView(RecyclerView recyclerView){
+        this.recyclerView = null;
+    }
+
+    /**
+     * Set the activity that the app will transition to once an item is clicked on.
+     * @param target The activity to go to.
+     */
+    public void onItemClickTransitionTo(Class target){
+        this.target = target;
     }
 
     @Override
