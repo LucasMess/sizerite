@@ -21,8 +21,16 @@ public class SelectCategoryActivity extends AppCompatActivity {
         // Bind card grid to view to show it.
         RecyclerView grid = (RecyclerView) findViewById(R.id.category_grid);
         cardGrid.bindTo(grid);
+
         // Set the activity to transition when an item is clicked.
-        cardGrid.onItemClickTransitionTo(SelectSizeActivity.class);
+        switch(MainActivity.currentState){
+            case AddingToWardrobe:
+                cardGrid.onItemClickTransitionTo(SelectSizeActivity.class);
+                break;
+            case FindingPerfectSize:
+                // TODO: Transition to the loading screen activity.
+                //cardGrid.onItemClickTransitionTo();
+        }
 
     }
 
