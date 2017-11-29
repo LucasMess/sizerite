@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.sizerite.cs465.sizerite.HomePage.NewsFeed;
 
@@ -35,9 +36,34 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.add_to_wardrobe_button);
         fab.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
-                Intent intent = new Intent(view.getContext(), SelectBrandActivity.class);
-                MainActivity.currentState = AppState.AddingToWardrobe;
-                startActivity(intent);
+//                Intent intent = new Intent(view.getContext(), SelectBrandActivity.class);
+//                MainActivity.currentState = AppState.AddingToWardrobe;
+//                startActivity(intent);
+                final View v = findViewById(R.id.select_action);
+                v.setVisibility(View.VISIBLE);
+
+                FloatingActionButton addItemButton = findViewById(R.id.add_new_item_button);
+                addItemButton.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View view) {
+                        Intent intent = new Intent(view.getContext(), SelectBrandActivity.class);
+                        MainActivity.currentState = AppState.AddingToWardrobe;
+                        startActivity(intent);
+                    }
+                });
+
+                FloatingActionButton shareButton = findViewById(R.id.share_buttom);
+                shareButton.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View view) {
+
+                    }
+                });
+
+                TextView resetBox = findViewById(R.id.reset_box);
+                resetBox.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View view) {
+                        v.setVisibility(View.GONE);
+                    }
+                });
             }
         });
     }
@@ -67,5 +93,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    public static void setSecondaryButtonListener() {
+    }
 
 }

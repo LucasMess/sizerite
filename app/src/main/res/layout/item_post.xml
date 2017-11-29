@@ -14,20 +14,28 @@
             android:id="@+id/post_image"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:scaleType="center"
+            android:scaleType="fitCenter"
             android:background="@drawable/ic_dummy_brand"/>
 
         <TextView
             android:id="@+id/post_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Post Title" />
+            android:text="Post Title"
+            android:textSize="16sp"
+            android:textColor="#333"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
+            <ImageView
+                android:layout_height="15dp"
+                android:layout_width="15dp"
+                android:scaleType="fitCenter"
+                android:background="@drawable/ic_like"
+                android:layout_gravity="center"
+ />
             <TextView
                 android:id="@+id/post_likes"
                 android:layout_width="wrap_content"
