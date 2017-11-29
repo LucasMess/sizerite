@@ -121,7 +121,8 @@ public class MainActivity extends AppCompatActivity {
             //TODO: Add the bitmap to the newsfeed
             String filePath = saveThumbnail(imageBitmap);
             Post post = new Post();
-            post.imageLocation = filePath;
+            post.externalThumbnail = imageBitmap;
+//            post.imageLocation = filePath;
             Log.d("Does it get here", filePath);
             newsFeed.addItem(post);
         }
