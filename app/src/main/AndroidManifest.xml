@@ -18,9 +18,10 @@
         </activity>
         <activity android:name=".SelectBrandActivity" />
         <activity android:name=".SelectCategoryActivity" />
-        <activity android:name=".SelectSizeActivity"/>
-        <activity android:name=".LoadingScreenActivity"/>
-        <activity android:name=".SelectFitActivity"/>
+        <activity android:name=".SelectSizeActivity" />
+        <activity android:name=".LoadingScreenActivity" />
+        <activity android:name=".SelectFitActivity" />
+        <activity android:name=".SizeRiteFitActivity"></activity>
     </application>
 
 </manifest>

@@ -21,7 +21,7 @@ public class LoadingScreenActivity extends AppCompatActivity {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SizeRiteFitActivity.class);
                 startActivity(intent);
             }
         }, 2000);
