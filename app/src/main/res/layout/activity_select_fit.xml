@@ -7,12 +7,13 @@
 
     <ImageView
         android:id="@+id/imageFit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
         android:layout_above="@+id/fitText"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
-        android:src="@drawable/fillernormal"/>
+        android:src="@drawable/fillernormal"
+        android:scaleType="fitCenter"/>
     <TextView
         android:id="@+id/fitText"
         android:layout_width="wrap_content"
@@ -34,7 +35,7 @@
         android:id="@+id/nextbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next"
+        android:text="Done"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/seekbar"
         android:layout_margin="10dp"/>
