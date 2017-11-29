@@ -1,9 +1,10 @@
 package com.sizerite.cs465.sizerite;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -35,9 +36,6 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.add_to_wardrobe_button);
         fab.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
-//                Intent intent = new Intent(view.getContext(), SelectBrandActivity.class);
-//                MainActivity.currentState = AppState.AddingToWardrobe;
-//                startActivity(intent);
                 final View v = findViewById(R.id.select_action);
                 v.setVisibility(View.VISIBLE);
 
@@ -53,7 +51,10 @@ public class MainActivity extends AppCompatActivity {
                 FloatingActionButton shareButton = findViewById(R.id.share_buttom);
                 shareButton.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
-
+                        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                            startActivityForResult(takePictureIntent, 1);
+                        }
                     }
                 });
 
