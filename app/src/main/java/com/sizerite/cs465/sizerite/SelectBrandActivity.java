@@ -20,7 +20,7 @@ public class SelectBrandActivity extends AppCompatActivity {
         setTitle("Select a brand");
 
         // Create a card grid for brands.
-        CardGridView cardGrid = new CardGridView(getApplicationContext());
+        CardGridView cardGrid = new CardGridView(this);
         cardGrid.createFrom("brands");
 
         // Bind card grid to view to show it.

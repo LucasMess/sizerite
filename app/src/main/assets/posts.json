@@ -1,36 +1,40 @@
 {
   "posts":[
     {
-      "title":"Look at all those chickens!",
-      "likeCount":123
+      "imageLocation":"news_feed1",
+      "title":"Wedding dress",
+      "likeCount":15
     },
     {
-      "title":"Look at all those chickens!",
-      "likeCount":123
+      "imageLocation":"news_feed2",
+      "likeCount":28
     },
     {
-      "title":"Look at all those chickens!",
-      "likeCount":123
+      "imageLocation":"news_feed3",
+      "likeCount":65
     },
     {
-      "title":"Look at all those chickens!",
-      "likeCount":123
+      "imageLocation":"news_feed4",
+      "title":"Tony Stark",
+      "likeCount":23
     },
     {
-      "title":"Look at all those chickens!",
-      "likeCount":123
+      "imageLocation":"news_feed5",
+      "likeCount":398
     },
     {
-      "title":"Look at all those chickens!",
-      "likeCount":123
+      "imageLocation":"news_feed6",
+      "title":"Gucci",
+      "likeCount":39
     },
     {
-      "title":"Look at all those chickens!",
-      "likeCount":123
+      "imageLocation":"news_feed7",
+      "likeCount":24
     },
     {
-      "title":"Look at all those chickens!",
-      "likeCount":123
+      "imageLocation":"news_feed8",
+      "title":"Hoodie",
+      "likeCount":57
     }
   ]
 }
