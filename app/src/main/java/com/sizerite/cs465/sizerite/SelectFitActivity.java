@@ -10,7 +10,8 @@ import android.widget.TextView;
  * Created by alanfang on 11/15/17.
  */
 
-public class SelectFitActivity extends AppCompatActivity {
+public class
+SelectFitActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -1,17 +1,38 @@
 { "categories":[
   {
-    "text":"T-Shirts"
+    "text":"TShirts"
+  },
+  {
+    "text":"Shirts"
+  },
+  {
+    "text":"Sweatshirts"
+  },
+  {
+    "text":"Jackets"
+  },
+  {
+    "text":"Dresses"
   },
   {
     "text":"Pants"
   },
   {
-    "text":"Shoes"
+    "text":"Jeans"
+  },
+  {
+    "text":"Skirts"
+  },
+  {
+    "text":"Hats"
   },
   {
     "text":"Socks"
   },
   {
-    "text":"Jackets"
+    "text":"Shoes"
+  },
+  {
+    "text":"Other"
   }
 ]}
