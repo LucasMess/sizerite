@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/fitText"
         android:layout_centerHorizontal="true"
-        android:layout_margin="50dp"
+        android:layout_marginBottom="30dp"
         android:src="@drawable/fillernormal"/>
     <TextView
         android:id="@+id/fitText"
@@ -20,14 +20,22 @@
         android:layout_above="@+id/seekbar"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="20dp"
         android:text="Normal Fit" />
     <SeekBar
         android:id="@+id/seekbar"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="60dp"
         android:max="10"
         android:progress="5"/>
+    <Button
+        android:id="@+id/nextbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/seekbar"
+        android:layout_margin="10dp"/>
 </RelativeLayout>
