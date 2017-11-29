@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -13,6 +14,11 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.sizerite.cs465.sizerite.HomePage.NewsFeed;
+import com.sizerite.cs465.sizerite.HomePage.Post;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
     public static AppState currentState = AppState.Newsfeed;
+    NewsFeed newsFeed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Creates the staggered grid for the news feed and populates it.
-        NewsFeed newsFeed = new NewsFeed(this);
+        newsFeed = new NewsFeed(this);
 
 
         // Make clicking on plus button take user to the select brand activity.
@@ -58,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
                         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
                             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
                         }
+
+                        v.setVisibility(View.GONE); // return to the news feed after image capture
                     }
                 });
 
@@ -98,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Gets the resulting Bitmap image from the picture that the user has just taken
+     * Gets the resulting Bitmap image from the thumbnail of the picture that the user has just taken
      * @param requestCode the request that has completed
      * @param resultCode the status of the request
      * @param data the Intent that has just executed the task
@@ -110,7 +119,33 @@ public class MainActivity extends AppCompatActivity {
             Bitmap imageBitmap = (Bitmap) extras.get("data");
 
             //TODO: Add the bitmap to the newsfeed
+            String filePath = saveThumbnail(imageBitmap);
+            Post post = new Post();
+            post.imageLocation = filePath;
+            Log.d("Does it get here", filePath);
+            newsFeed.addItem(post);
         }
     }
 
+    String saveThumbnail(Bitmap bmp) {
+        FileOutputStream out = null;
+        File file = new File(getApplicationContext().getFilesDir(), "Test.jpg");
+        try {
+            out = new FileOutputStream(file);
+            bmp.compress(Bitmap.CompressFormat.PNG, 100, out);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (out != null) {
+                    out.close();
+                    MediaStore.Images.Media.insertImage(getContentResolver(),file.getAbsolutePath(),file.getName(),file.getName());
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return file.getAbsolutePath();
+    }
 }

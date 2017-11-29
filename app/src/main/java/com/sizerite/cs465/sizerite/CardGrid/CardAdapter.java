@@ -78,6 +78,4 @@ public class CardAdapter extends RecyclerView.Adapter<CardHolder> {
     public int getItemCount() {
         return cards.size();
     }
-
-
 }
