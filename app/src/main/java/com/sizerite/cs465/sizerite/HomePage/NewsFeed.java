@@ -25,22 +25,28 @@ import java.util.ArrayList;
 public class NewsFeed {
 
     Context context;
+    PostAdapter adapter;
+    ArrayList<Post> posts;
+    RecyclerView recyclerView;
 
     public NewsFeed(Context context){
         this.context = context;
 
         // Generate a list of posts from posts.json.
-        ArrayList<Post> posts = getPostsFromJSON();
+        posts = getPostsFromJSON();
 
         // Create the staggered grid.
         RecyclerView postGrid = ((Activity)context).findViewById(R.id.posts_grid);
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         layoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
         postGrid.setLayoutManager(layoutManager);
-        postGrid.setHasFixedSize(true);
+        postGrid.setHasFixedSize(false);
+        recyclerView = postGrid;
 
         // Bind the grid to the posts.
-        PostAdapter adapter = new PostAdapter(posts, context);
+        adapter = new PostAdapter(posts, context);
+
+
         postGrid.setAdapter(adapter);
     }
 
@@ -129,6 +135,11 @@ public class NewsFeed {
         }
     }
 
+    public void addItem(Post newPost) {
+        posts.add(0, newPost);
+        adapter.notifyItemInserted(0);
+        recyclerView.scrollToPosition(0);
+    }
 }
 
 

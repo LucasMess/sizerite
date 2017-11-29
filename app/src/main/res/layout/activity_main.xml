@@ -54,6 +54,7 @@
             android:layout_alignBottom="@+id/add_new_item_button"
             android:layout_marginBottom="5dp"
             android:layout_marginRight="30dp"
+            android:textStyle="bold"
             />
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/share_buttom"
@@ -72,6 +73,7 @@
             android:layout_alignBottom="@+id/share_buttom"
             android:layout_marginBottom="5dp"
             android:layout_marginRight="30dp"
+            android:textStyle="bold"
             />
     </RelativeLayout>
 
