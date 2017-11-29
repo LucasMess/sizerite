@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,10 +14,6 @@ import android.widget.TextView;
 
 import com.sizerite.cs465.sizerite.HomePage.NewsFeed;
 import com.sizerite.cs465.sizerite.HomePage.Post;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -119,34 +114,35 @@ public class MainActivity extends AppCompatActivity {
             Bitmap imageBitmap = (Bitmap) extras.get("data");
 
             //TODO: Add the bitmap to the newsfeed
-            String filePath = saveThumbnail(imageBitmap);
+//            String filePath = saveThumbnail(imageBitmap);
             Post post = new Post();
             post.externalThumbnail = imageBitmap;
 //            post.imageLocation = filePath;
-            Log.d("Does it get here", filePath);
+//            Log.d("Does it get here", filePath);
             newsFeed.addItem(post);
         }
     }
 
-    String saveThumbnail(Bitmap bmp) {
-        FileOutputStream out = null;
-        File file = new File(getApplicationContext().getFilesDir(), "Test.jpg");
-        try {
-            out = new FileOutputStream(file);
-            bmp.compress(Bitmap.CompressFormat.PNG, 100, out);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (out != null) {
-                    out.close();
-                    MediaStore.Images.Media.insertImage(getContentResolver(),file.getAbsolutePath(),file.getName(),file.getName());
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        return file.getAbsolutePath();
-    }
+//    String saveThumbnail(Bitmap bmp) {
+//        FileOutputStream out = null;
+//
+//        File file = new File(getApplicationContext().getFilesDir(), "Test.jpg");
+//        try {
+//            out = new FileOutputStream(file);
+//            bmp.compress(Bitmap.CompressFormat.PNG, 100, out);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } finally {
+//            try {
+//                if (out != null) {
+//                    out.close();
+//                    MediaStore.Images.Media.insertImage(getContentResolver(),file.getAbsolutePath(),file.getName(),file.getName());
+//                }
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+//        return file.getAbsolutePath();
+//    }
 }
