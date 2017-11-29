@@ -1,4 +1,4 @@
-package com.sizerite.cs465.sizerite;
+package com.sizerite.cs465.sizerite.HomePage;
 
 import android.content.Context;
 

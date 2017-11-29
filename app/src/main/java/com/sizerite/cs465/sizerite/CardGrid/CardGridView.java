@@ -1,16 +1,8 @@
-package com.sizerite.cs465.sizerite;
+package com.sizerite.cs465.sizerite.CardGrid;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.support.v7.widget.CardView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,12 +18,13 @@ import java.util.ArrayList;
  * <p>
  * Created by Lucas on 11/13/2017.
  */
-public class CardGrid {
+public class CardGridView {
 
     Context context;
     ArrayList<Card> cards;
+    CardAdapter adapter;
 
-    public CardGrid(Context context) {
+    public CardGridView(Context context) {
         this.context = context;
     }
 
@@ -47,32 +40,24 @@ public class CardGrid {
      * Bind this card grid to a grid, so that it can show the cards in it.
      * @param grid Where the card grid will be shown.
      */
-    public void bindTo(GridView grid) {
-        Adapter adapter = new Adapter(context, cards);
+    public void bindTo(RecyclerView grid) {
+
+        GridLayoutManager layoutManager = new GridLayoutManager(context, 3);
+        grid.setLayoutManager(layoutManager);
+        grid.setHasFixedSize(true);
+
+        adapter = new CardAdapter(cards, context);
         grid.setAdapter(adapter);
     }
 
     /**
-     * Adapter used to convert an array of cards into a grid view.
+     * Set the activity that the app will transition to once an item is clicked on.
+     * @param target The activity to go to.
      */
-    public class Adapter extends ArrayAdapter<Card> {
-        public Adapter(Context context, ArrayList<Card> cards) {
-            super(context, 0, cards);
-        }
-
-        public View getView(int position, View convertView, ViewGroup parent) {
-            // Get the card at this position.
-            Card card = getItem(position);
-
-            // Check if an existing view is being reused, otherwise inflate the view
-            if (convertView == null) {
-                convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_grid_card, parent, false);
-            }
-
-            // Populate the view with the data of the card.
-            return card.populateView(convertView);
-
-        }
+    public void onItemClickTransitionTo(Class target){
+        if (adapter == null)
+            throw new NullPointerException("The adapter has not been initialized yet. Call bindTo before this.");
+        adapter.onItemClickTransitionTo(target);
     }
 
     /**
@@ -103,6 +88,10 @@ public class CardGrid {
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void onClickRedirectTo(){
+
     }
 
     /**
@@ -162,59 +151,4 @@ public class CardGrid {
         }
     }
 
-    /**
-     * Used to store the attributes of a card for the card grid, such as its color, image, and text.
-     */
-    public class Card {
-        public String text = "Dummy";
-        public String backgroundColor = "#ffffff";
-        public boolean showText = true;
-
-        public Card() {
-        }
-
-        /**
-         * Populates the fields of view's layout based on the card's data.
-         * @param view The view to be populated.
-         * @return The populated view.
-         */
-        public View populateView(View view) {
-
-            // Lookup the views inside the target view to be populated.
-            TextView viewText = (TextView) view.findViewById(R.id.item_name);
-            ImageView viewImage = (ImageView) view.findViewById(R.id.item_image);
-            CardView viewCard = (CardView) view.findViewById(R.id.item_background);
-
-
-            // Set the text of the card if needed.
-            if (showText) {
-                if (viewText != null)
-                    viewText.setText(text);
-            }
-            else{
-                // Remove default text and center the image vertically.
-                viewText.setText("");
-                if(viewImage != null) {
-                    RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)viewImage.getLayoutParams();
-                    params.addRule(RelativeLayout.CENTER_VERTICAL);
-                    viewImage.setLayoutParams(params);
-                }
-            }
-
-            // Set the background color of the card.
-            if (viewCard != null)
-                viewCard.setBackgroundColor(Color.parseColor(backgroundColor));
-
-            // Try to find the file with the same name as the text of the card to use as image.
-            int resId = view.getResources().getIdentifier(text.toLowerCase(),
-                    "drawable", view.getContext().getPackageName());
-
-            // If the resource ID is 0, the file was not found, and the app will use the default image.
-            if (resId != 0) {
-                viewImage.setImageResource(resId);
-            }
-
-            return view;
-        }
-    }
 }

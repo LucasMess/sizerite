@@ -1,9 +1,11 @@
-package com.sizerite.cs465.sizerite;
+package com.sizerite.cs465.sizerite.HomePage;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.sizerite.cs465.sizerite.R;
 
 /**
  * Contains the views used to display the data.

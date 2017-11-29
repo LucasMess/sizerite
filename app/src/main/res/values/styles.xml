@@ -9,13 +9,9 @@
     </style>
 
     <style name="CardGrid">
-        <item name="android:columnWidth">100dp</item>
-        <item name="android:numColumns">auto_fit</item>
-        <item name="android:verticalSpacing">10dp</item>
-        <item name="android:horizontalSpacing">10dp</item>
-        <item name="android:layout_margin">10dp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">10dp</item>
         <item name="android:padding">5dp</item>
         <item name="android:clipToPadding">false</item>
     </style>
