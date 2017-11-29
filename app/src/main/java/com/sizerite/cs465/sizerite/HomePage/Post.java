@@ -9,7 +9,7 @@ import android.content.Context;
  * Created by Lucas on 11/16/2017.
  */
 public class Post {
-    public String title = "No Title";
+    public String title = "";
     public String imageLocation = "ic_dummy_brand";
     public int likeCount = 0;
 
