@@ -1,6 +1,7 @@
 package com.sizerite.cs465.sizerite;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         FindingPerfectSize,
     }
 
+    static final int REQUEST_IMAGE_CAPTURE = 1;
     public static AppState currentState = AppState.Newsfeed;
 
     @Override
@@ -48,16 +50,18 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+                // Opens the camera intent to capture photo
                 FloatingActionButton shareButton = findViewById(R.id.share_buttom);
                 shareButton.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-                            startActivityForResult(takePictureIntent, 1);
+                            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
                         }
                     }
                 });
 
+                // if the reset box is tapped, then it is assumed that the user wants to go back to the news feed
                 TextView resetBox = findViewById(R.id.reset_box);
                 resetBox.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
@@ -93,7 +97,20 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    public static void setSecondaryButtonListener() {
+    /**
+     * Gets the resulting Bitmap image from the picture that the user has just taken
+     * @param requestCode the request that has completed
+     * @param resultCode the status of the request
+     * @param data the Intent that has just executed the task
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+
+            //TODO: Add the bitmap to the newsfeed
+        }
     }
 
 }
