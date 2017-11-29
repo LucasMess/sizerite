@@ -22,5 +22,56 @@
         android:layout_margin="20dp"
         app:srcCompat="@drawable/ic_plus_button"
         />
+    <!-- This is a view that activates on the onclick of the FloatingActionButton-->
+    <RelativeLayout
+        android:id="@+id/select_action"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#BBFFFFFF"
+        android:visibility="gone">
+        <TextView
+            android:id="@+id/reset_box"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="110dp"
+            android:clickable="true"
+            />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/add_new_item_button"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="70dp"
+            android:layout_marginBottom="67dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="add new item"
+            android:layout_alignRight="@+id/add_new_item_button"
+            android:layout_alignBottom="@+id/add_new_item_button"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="30dp"
+            />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/share_buttom"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="85dp"
+            android:layout_marginBottom="20dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="share"
+            android:layout_alignRight="@+id/share_buttom"
+            android:layout_alignBottom="@+id/share_buttom"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="30dp"
+            />
+    </RelativeLayout>
 
 </RelativeLayout>
