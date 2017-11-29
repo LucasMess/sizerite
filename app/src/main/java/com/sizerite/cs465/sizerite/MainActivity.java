@@ -40,13 +40,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        CheckableImageButton fab2 = (CheckableImageButton) findViewById(R.id.sizerite_button);
-        fab2.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
-                Intent intent = new Intent(view.getContext(), SelectBrandSizerite.class);
-                startActivity(intent);
-            }
-        });
     }
 
     /**
