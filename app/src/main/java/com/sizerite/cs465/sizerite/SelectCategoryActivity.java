@@ -15,7 +15,7 @@ public class SelectCategoryActivity extends AppCompatActivity {
         setTitle("Select a category");
 
         // Create a card grid for categories.
-        CardGridView cardGrid = new CardGridView(getApplicationContext());
+        CardGridView cardGrid = new CardGridView(this);
         cardGrid.createFrom("categories");
 
         // Bind card grid to view to show it.
