@@ -27,6 +27,7 @@ public class NewsFeed {
     Context context;
     PostAdapter adapter;
     ArrayList<Post> posts;
+    RecyclerView recyclerView;
 
     public NewsFeed(Context context){
         this.context = context;
@@ -40,9 +41,12 @@ public class NewsFeed {
         layoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
         postGrid.setLayoutManager(layoutManager);
         postGrid.setHasFixedSize(false);
+        recyclerView = postGrid;
 
         // Bind the grid to the posts.
         adapter = new PostAdapter(posts, context);
+
+
         postGrid.setAdapter(adapter);
     }
 
@@ -134,6 +138,7 @@ public class NewsFeed {
     public void addItem(Post newPost) {
         posts.add(0, newPost);
         adapter.notifyItemInserted(0);
+        recyclerView.scrollToPosition(0);
     }
 }
 

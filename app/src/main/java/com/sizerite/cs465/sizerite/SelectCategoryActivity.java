@@ -28,8 +28,8 @@ public class SelectCategoryActivity extends AppCompatActivity {
                 cardGrid.onItemClickTransitionTo(SelectSizeActivity.class);
                 break;
             case FindingPerfectSize:
-                // TODO: Transition to the loading screen activity.
-                //cardGrid.onItemClickTransitionTo();
+                cardGrid.onItemClickTransitionTo(LoadingScreenActivity.class);
+                break;
         }
 
     }
