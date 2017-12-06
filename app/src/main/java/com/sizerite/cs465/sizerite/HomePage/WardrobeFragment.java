@@ -8,11 +8,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.sizerite.cs465.sizerite.CustomList;
 import com.sizerite.cs465.sizerite.R;
 
 /**
@@ -28,22 +25,29 @@ public class WardrobeFragment extends Fragment {
 
     ListView list;
     String[] brands = {
-            "Adidas",
-            "Adidas",
-            "Adidas",
-            "Adidas",
-            "Adidas"
+            "Nike",
+            "Reebok",
+            "RalphLauren",
+            "OldNavy",
+            "Gap",
+            "Gap"
     } ;
     String[] categories = {
-            "Shorts",
-            "Shorts",
-            "Shorts",
-            "Shorts",
-            "Shorts",
+            "Shoes",
+            "Shoes",
+            "Jackets",
+            "Jeans",
+            "Sweatshirt",
+            "TShirts"
     } ;
 
-    int[] sizes = {
-            32, 43, 67, 32, 12
+    String[] sizes = {
+            "11",
+            "10.5",
+            "L",
+            "32",
+            "M",
+            "M"
     };
 
     private OnFragmentInteractionListener mListener;
@@ -72,7 +76,7 @@ public class WardrobeFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        CustomList adapter = new CustomList(getActivity(), categories, brands, sizes);
+        WardrobeList adapter = new WardrobeList(getActivity(), categories, brands, sizes);
         list = view.findViewById(R.id.wardrobe_view);
         list.setAdapter(adapter);
     }
