@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import com.sizerite.cs465.sizerite.CustomList;
 import com.sizerite.cs465.sizerite.R;
-import com.sizerite.cs465.sizerite.WardrobeActivitiy;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,24 +27,23 @@ public class WardrobeFragment extends Fragment {
 
 
     ListView list;
-    String[] web = {
-            "Google Plus",
-            "Twitter",
-            "Windows",
-            "Bing",
-            "Itunes",
-            "Wordpress",
-            "Drupal"
+    String[] brands = {
+            "Adidas",
+            "Adidas",
+            "Adidas",
+            "Adidas",
+            "Adidas"
     } ;
-    Integer[] imageId = {
-            R.drawable.news_feed1,
-            R.drawable.news_feed2,
-            R.drawable.news_feed3,
-            R.drawable.news_feed4,
-            R.drawable.news_feed5,
-            R.drawable.news_feed6,
-            R.drawable.news_feed7
+    String[] categories = {
+            "Shorts",
+            "Shorts",
+            "Shorts",
+            "Shorts",
+            "Shorts",
+    } ;
 
+    int[] sizes = {
+            32, 43, 67, 32, 12
     };
 
     private OnFragmentInteractionListener mListener;
@@ -74,18 +72,9 @@ public class WardrobeFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        CustomList adapter = new CustomList(getActivity(), web, imageId);
+        CustomList adapter = new CustomList(getActivity(), categories, brands, sizes);
         list = view.findViewById(R.id.wardrobe_view);
         list.setAdapter(adapter);
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                Toast.makeText(getActivity(), "You Clicked at " + web[+ position], Toast.LENGTH_SHORT).show();
-
-            }
-        });
     }
 
     @Override
