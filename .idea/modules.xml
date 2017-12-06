@@ -4,8 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/sizerite.iml" filepath="$PROJECT_DIR$/sizerite.iml" />
-      <module fileurl="file://C:\Users\Lucas\Documents\cs465\SizeRite\sizerite_master.iml" filepath="C:\Users\Lucas\Documents\cs465\SizeRite\sizerite_master.iml" />
       <module fileurl="file://C:\Users\Lucas\Documents\cs465\sizerite\sizerite_master.iml" filepath="C:\Users\Lucas\Documents\cs465\sizerite\sizerite_master.iml" />
+      <module fileurl="file://C:\Users\Lucas\Documents\cs465\SizeRite\sizerite_master.iml" filepath="C:\Users\Lucas\Documents\cs465\SizeRite\sizerite_master.iml" />
     </modules>
   </component>
 </project>
