@@ -1,7 +1,5 @@
 package com.sizerite.cs465.sizerite;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -10,18 +8,25 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 import com.sizerite.cs465.sizerite.HomePage.NewsFeed;
 import com.sizerite.cs465.sizerite.HomePage.NewsfeedFragment;
 import com.sizerite.cs465.sizerite.HomePage.Post;
+import com.sizerite.cs465.sizerite.HomePage.WardrobeFragment;
 
-public class MainActivity extends AppCompatActivity implements NewsfeedFragment.OnFragmentInteractionListener {
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity
+        implements
+        NewsfeedFragment.OnFragmentInteractionListener,
+        WardrobeFragment.OnFragmentInteractionListener
+{
 
     @Override
     public void onFragmentInteraction(Uri uri) {
@@ -39,24 +44,47 @@ public class MainActivity extends AppCompatActivity implements NewsfeedFragment.
     public static AppState currentState = AppState.Newsfeed;
     NewsFeed newsFeed;
 
+    private void changeFragment(String frag){
+        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+        android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        for(Fragment fragment:getSupportFragmentManager().getFragments()){
+            fragmentTransaction.remove(fragment);
+        }
+
+        switch (frag){
+            case "newsfeed":
+                NewsfeedFragment newsfeedFragment = new NewsfeedFragment();
+                fragmentTransaction.add(R.id.content_view, newsfeedFragment);
+                fragmentTransaction.commit();
+                break;
+            case "wardrobe":
+                WardrobeFragment wardrobeFragment = new WardrobeFragment();
+                fragmentTransaction.add(R.id.content_view, wardrobeFragment);
+                fragmentTransaction.commit();
+                break;
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-        android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        NewsfeedFragment fragment = new NewsfeedFragment();
-        fragmentTransaction.add(R.id.content_view, fragment);
-        fragmentTransaction.commit();
-
-
+        changeFragment("newsfeed");
 
         // Make clicking on plus button take user to the select brand activity.
         FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.add_to_wardrobe_button);
         fab.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
+
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                }
+
+
+                /**
                 final View v = findViewById(R.id.select_action);
                 v.setVisibility(View.VISIBLE);
 
@@ -89,6 +117,7 @@ public class MainActivity extends AppCompatActivity implements NewsfeedFragment.
                         v.setVisibility(View.GONE);
                     }
                 });
+                 */
             }
         });
 
@@ -98,16 +127,18 @@ public class MainActivity extends AppCompatActivity implements NewsfeedFragment.
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.action_newsfeed:
-
+                        changeFragment("newsfeed");
                         break;
                     case R.id.action_wardrobe:
-
+                        changeFragment("wardrobe");
                         break;
                     case R.id.action_find_size:
-
+                        MainActivity.currentState = AppState.FindingPerfectSize;
+                        Intent intent = new Intent(getApplicationContext(), SelectBrandActivity.class);
+                        startActivity(intent);
                         break;
                 }
-                return false;
+                return true;
             }
         });
 
