@@ -10,7 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.sizerite.cs465.sizerite.MainActivity;
 import com.sizerite.cs465.sizerite.R;
+import com.sizerite.cs465.sizerite.WardrobeItem;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,7 +27,6 @@ import com.sizerite.cs465.sizerite.R;
 public class WardrobeFragment extends Fragment {
 
 
-    ListView list;
     String[] brands = {
             "Nike",
             "Reebok",
@@ -51,6 +54,8 @@ public class WardrobeFragment extends Fragment {
     };
 
     private OnFragmentInteractionListener mListener;
+    static WardrobeList adapter;
+    ListView listView;
 
     public WardrobeFragment() {
         // Required empty public constructor
@@ -76,9 +81,21 @@ public class WardrobeFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        WardrobeList adapter = new WardrobeList(getActivity(), categories, brands, sizes);
-        list = view.findViewById(R.id.wardrobe_view);
-        list.setAdapter(adapter);
+
+        ArrayList<WardrobeItem> items = new ArrayList<>();
+        for (int i = 0; i < categories.length; i++){
+            WardrobeItem item = new WardrobeItem();
+            item.brand = brands[i];
+            item.category = categories[i];
+            item.size = sizes[i];
+            items.add(item);
+        }
+
+        if (adapter == null){
+            adapter = new WardrobeList(getActivity(), items);
+        }
+        listView = view.findViewById(R.id.wardrobe_view);
+        listView.setAdapter(adapter);
     }
 
     @Override
@@ -98,6 +115,7 @@ public class WardrobeFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
@@ -110,6 +128,12 @@ public class WardrobeFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    public void AddItem(WardrobeItem item){
+        adapter.add(item);
+        adapter.notifyDataSetInvalidated();
+        listView.invalidateViews();
     }
 
     /**

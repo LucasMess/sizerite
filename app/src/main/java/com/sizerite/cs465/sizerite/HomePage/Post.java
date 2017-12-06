@@ -29,6 +29,7 @@ public class Post {
         if (title != null)
            postHolder.titleTextView.setText(title);
 
+
         postHolder.likesTextView.setText(String.valueOf(likeCount));
 
         // Try to find the file with the same name as the text of the card to use as image.

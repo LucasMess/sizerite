@@ -8,7 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.sizerite.cs465.sizerite.MainActivity;
 import com.sizerite.cs465.sizerite.R;
+import com.sizerite.cs465.sizerite.SelectBrandActivity;
+import com.sizerite.cs465.sizerite.SelectCategoryActivity;
 
 import java.util.ArrayList;
 
@@ -42,6 +45,12 @@ public class CardAdapter extends RecyclerView.Adapter<CardHolder> {
                     CardHolder clickedCard = (CardHolder) recyclerView.findContainingViewHolder(view);
                     if (target != null) {
                         Intent intent = new Intent(context, target);
+                        if (target == SelectBrandActivity.class){
+                            MainActivity.wardrobeItem.brand = (String)clickedCard.titleTextView.getText();
+                        }
+                        if (target == SelectCategoryActivity.class){
+                            MainActivity.wardrobeItem.category = (String)clickedCard.titleTextView.getText();
+                        }
                         context.startActivity(intent);
                     }
                 }

@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by alanfang on 11/15/17.
@@ -29,6 +30,9 @@ SelectFitActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), MainActivity.class);
+                MainActivity.wardrobeFragment.AddItem(MainActivity.wardrobeItem);
+                Toast toast = Toast.makeText(view.getContext(), "Item added to wardrobe", Toast.LENGTH_LONG);
+                toast.show();
                 startActivity(intent);
             }
         });
@@ -40,11 +44,11 @@ SelectFitActivity extends AppCompatActivity {
                 public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                     TextView fitTextView = (TextView) findViewById(R.id.fitText);
                     ImageView fitImageView = (ImageView) findViewById(R.id.imageFit);
-                    if (i <= 3) {
+                    if (i == 0) {
                         fitTextView.setText("Tight fit");
                         fitImageView.setImageResource(R.drawable.fillertight);
                     }
-                    else if (i >= 4 && i <= 7){
+                    else if (i == 1){
                         fitTextView.setText("Normal fit");
                         fitImageView.setImageResource(R.drawable.fillernormal);
                     }

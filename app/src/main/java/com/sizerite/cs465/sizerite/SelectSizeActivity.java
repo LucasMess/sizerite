@@ -66,7 +66,7 @@ public class SelectSizeActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String selected = spinner.getSelectedItem().toString();
+                final String selected = spinner.getSelectedItem().toString();
 
                 // If the user actually selected a valid option.
                 if (selected != DEFAULT_SELECTION){
@@ -77,6 +77,7 @@ public class SelectSizeActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             Intent intent = new Intent(getApplicationContext(), SelectFitActivity.class);
+                            MainActivity.wardrobeItem.size = selected;
                             startActivity(intent);
                         }
                     }, 500);

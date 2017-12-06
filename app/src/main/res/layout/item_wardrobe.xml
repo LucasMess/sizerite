@@ -2,12 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="90dp"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:background="#fff">
 
     <ImageView
         android:id="@+id/category_image"
         android:layout_width="70dp"
         android:layout_height="70dp"
+        android:layout_marginRight="30dp"
         android:src="@drawable/ic_dummy_brand" />
 
     <ImageView

@@ -21,7 +21,7 @@ import com.sizerite.cs465.sizerite.R;
  */
 public class NewsfeedFragment extends Fragment {
 
-    NewsFeed newsFeed;
+    public NewsFeed newsFeed;
 
     private OnFragmentInteractionListener mListener;
 

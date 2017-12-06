@@ -1,4 +1,4 @@
-package com.sizerite.cs465.sizerite;
+package com.sizerite.cs465.sizerite.HomePage;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -8,25 +8,30 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.sizerite.cs465.sizerite.R;
+import com.sizerite.cs465.sizerite.WardrobeItem;
+
+import java.util.ArrayList;
+
 /**
  * Created by nathanzurcher on 12/5/17.
  */
 
-public class CustomList extends ArrayAdapter<String> {
+public class WardrobeList extends ArrayAdapter<String> {
 
     private final Activity context;
-    private final String[] brands;
-    private final String[] categories;
-    private final int[] sizes;
+    private final ArrayList<WardrobeItem> wardrobeItems;
 
-    public CustomList(Activity context, String[] categories, String[] brands, int[] sizes) {
-        super(context, R.layout.item_wardrobe, brands);
+    public WardrobeList(Activity context, ArrayList<WardrobeItem> wardrobeItems) {
+        super(context, R.layout.item_wardrobe, new String[wardrobeItems.size()]);
         this.context = context;
-        this.brands = brands;
-        this.categories = categories;
-        this.sizes = sizes;
-
+        this.wardrobeItems = wardrobeItems;
     }
+
+    public void add(WardrobeItem item){
+        wardrobeItems.add(item);
+    }
+
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -35,9 +40,9 @@ public class CustomList extends ArrayAdapter<String> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_wardrobe, parent, false);
         }
 
-        String brand = brands[position];
-        String category = categories[position];
-        int size = sizes[position];
+        String brand = wardrobeItems.get(position).brand;
+        String category = wardrobeItems.get(position).category;
+        String size = wardrobeItems.get(position).size;
 
         ImageView brandImageView = convertView.findViewById(R.id.brand_image);
         ImageView categoryImageView = convertView.findViewById(R.id.category_image);
@@ -62,7 +67,7 @@ public class CustomList extends ArrayAdapter<String> {
         }
 
         // Set size text.
-        sizeTextView.setText("Size: "+String.valueOf(size));
+        sizeTextView.setText(size);
 
         return convertView;
     }
