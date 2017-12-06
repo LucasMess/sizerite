@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/find_size_button"
-        android:icon="@drawable/ruler_white"
-        android:title="Find the perfect size"
+        android:id="@+id/logout_button"
+        android:icon="@drawable/logout"
+        android:title="Log Out"
         app:showAsAction="always"
         android:orderInCategory="0"/>
 
