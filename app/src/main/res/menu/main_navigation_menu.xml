@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_newsfeed"
+        android:title="Newsfeed"
+        android:icon="@drawable/ic_dummy_brand" />
+    <item android:id="@+id/action_wardrobe"
+        android:title="Wardrobe"
+        android:icon="@drawable/ic_dummy_brand" />
+    <item android:id="@+id/action_find_size"
+        android:title="Find Size"
+        android:icon="@drawable/ruler_black" />
+</menu>

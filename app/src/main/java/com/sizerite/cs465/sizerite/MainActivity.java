@@ -1,9 +1,14 @@
 package com.sizerite.cs465.sizerite;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -13,9 +18,15 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.sizerite.cs465.sizerite.HomePage.NewsFeed;
+import com.sizerite.cs465.sizerite.HomePage.NewsfeedFragment;
 import com.sizerite.cs465.sizerite.HomePage.Post;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NewsfeedFragment.OnFragmentInteractionListener {
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
 
     public enum AppState{
         Newsfeed,
@@ -32,8 +43,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Creates the staggered grid for the news feed and populates it.
-        newsFeed = new NewsFeed(this);
+        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+        android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        NewsfeedFragment fragment = new NewsfeedFragment();
+        fragmentTransaction.add(R.id.content_view, fragment);
+        fragmentTransaction.commit();
+
 
 
         // Make clicking on plus button take user to the select brand activity.
@@ -74,6 +90,34 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+
+        BottomNavigationView bottomNavigationBar = findViewById(R.id.navigation_bar);
+        bottomNavigationBar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.action_newsfeed:
+
+                        break;
+                    case R.id.action_wardrobe:
+
+                        break;
+                    case R.id.action_find_size:
+
+                        break;
+                }
+                return false;
+            }
+        });
+
+        bottomNavigationBar.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
+            @Override
+            public void onNavigationItemReselected(@NonNull MenuItem item) {
+
+            }
+        });
+
+
     }
 
     /**

@@ -7,20 +7,31 @@
     android:background="#dddddd"
     tools:context="com.sizerite.cs465.sizerite.MainActivity">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/posts_grid"
+    <!-- Where the different fragments for newsfeed, wardrobe, etc are placed.-->
+    <FrameLayout
+        android:id="@+id/content_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="fill_parent"
+        android:layout_above="@id/navigation_bar">
+    </FrameLayout>
 
-    </android.support.v7.widget.RecyclerView>
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation_bar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_gravity="start"
+        android:background="#fff"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/main_navigation_menu" />
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/add_to_wardrobe_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_margin="20dp"
+        android:layout_above="@id/navigation_bar"
         app:srcCompat="@drawable/ic_plus_button"
         />
     <!-- This is a view that activates on the onclick of the FloatingActionButton-->
