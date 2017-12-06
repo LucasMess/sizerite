@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity
         NewsfeedFragment.OnFragmentInteractionListener,
         WardrobeFragment.OnFragmentInteractionListener
 {
-
+int status_view = 0;
     @Override
     public void onFragmentInteraction(Uri uri) {
 
@@ -57,11 +57,13 @@ public class MainActivity extends AppCompatActivity
                 NewsfeedFragment newsfeedFragment = new NewsfeedFragment();
                 fragmentTransaction.add(R.id.content_view, newsfeedFragment);
                 fragmentTransaction.commit();
+                status_view = 0;
                 break;
             case "wardrobe":
                 WardrobeFragment wardrobeFragment = new WardrobeFragment();
                 fragmentTransaction.add(R.id.content_view, wardrobeFragment);
                 fragmentTransaction.commit();
+                status_view = 1;
                 break;
         }
     }
@@ -77,11 +79,20 @@ public class MainActivity extends AppCompatActivity
         FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.add_to_wardrobe_button);
         fab.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
+                if(status_view==0){
+                    Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                        startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                    }
 
-                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
                 }
+                else{
+                    MainActivity.currentState = AppState.AddingToWardrobe;
+                    Intent intent = new Intent(getApplicationContext(), SelectBrandActivity.class);
+                    startActivity(intent);
+                }
+
+
 
 
                 /**
