@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements NewsfeedFragment.
         Newsfeed,
         AddingToWardrobe,
         FindingPerfectSize,
+        LoggingOut
     }
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
@@ -131,12 +132,12 @@ public class MainActivity extends AppCompatActivity implements NewsfeedFragment.
         inflater.inflate(R.menu.main_menu, menu);
 
         // Set the ruler's on click listener.
-        MenuItem findSizeButton = menu.findItem(R.id.find_size_button);
+        MenuItem findSizeButton = menu.findItem(R.id.logout_button);
         findSizeButton.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                MainActivity.currentState = AppState.FindingPerfectSize;
-                Intent intent = new Intent(getApplicationContext(), SelectBrandActivity.class);
+                MainActivity.currentState = AppState.LoggingOut;
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
                 return true;
             }
